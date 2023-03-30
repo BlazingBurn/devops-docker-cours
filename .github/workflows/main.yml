@@ -38,4 +38,4 @@ jobs:
         run: docker ps
 
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/flask_image:latest
+        run: docker push flask_image:latest
