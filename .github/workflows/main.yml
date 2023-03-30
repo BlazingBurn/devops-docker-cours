@@ -32,7 +32,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       
       - name: Docker Tags
-        run: docker tag ${{ secrets.DOCKER_USERNAME }}/flask_image:flask_image
+        run: docker tag flask_image ${{ secrets.DOCKER_USERNAME }}/flask_image:latest
       
       - name: Docker Images
         run: docker images
