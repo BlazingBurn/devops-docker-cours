@@ -1,0 +1,25 @@
+name: Cypress
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  Cypress-unit-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout GitCode
+        uses: actions/checkout@v2
+      
+      - name: Cypress Run
+        uses: cypress-io/github-action@v4
+        with:
+          project: ./projet
+          browser: chrome
+          command: npx cypress run
+          wait-on: "http://localhost:5000/"
