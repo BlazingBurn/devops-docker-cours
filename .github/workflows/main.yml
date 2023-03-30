@@ -18,9 +18,18 @@ jobs:
 
       - name: Start Docker Compose
         run: docker-compose up -d
-      
+
       - name: Run Cypress Unit Test
         uses: cypress-io/github-action@v4
         with:
           command: npx cypress run
           browser: chrome
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      - name: Push Docker image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/flask_image
