@@ -4,6 +4,6 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    image: flask_image
+    image: flask_image:latest
     ports:
       - "5000:5000"
