@@ -16,10 +16,8 @@ jobs:
       - name: Checkout GitCode
         uses: actions/checkout@v2
       
-      - name: Cypress Run
+      - name: Run Cypress Unit Test
         uses: cypress-io/github-action@v4
         with:
-          project: ./projet
-          browser: chrome
           command: npx cypress run
-          wait-on: "http://localhost:5000/"
+          browser: chrome
