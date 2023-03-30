@@ -14,7 +14,17 @@ jobs:
 
     steps:
       - name: Checkout GitCode
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Build the Docker image => flask
+        run: docker build . --file Dockerfile --tag flask_image
+
+      - name: Start Docker Compose
+        uses: docker/compose@v2
+        with:
+          compose-version: '2.0.1'
+          compose-file: docker-compose.yml
+          command: up
       
       - name: Run Cypress Unit Test
         uses: cypress-io/github-action@v4
