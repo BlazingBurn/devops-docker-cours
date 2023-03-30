@@ -1,0 +1,10 @@
+FROM nginx:latest
+
+RUN apt-get update && apt-get upgrade -y
+
+EXPOSE 8080
+
+WORKDIR /mnt/d/Hitema/cours devops/docker/
+
+COPY ./default.conf ./etc/nginx/conf.d/default.conf
+COPY ./default.conf ./etc/nginx/sites-available

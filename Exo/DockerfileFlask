@@ -1,0 +1,12 @@
+FROM ubuntu:latest
+
+RUN apt-get update -y && apt-get install -y python3 python3-pip
+RUN pip install flask
+
+WORKDIR /mnt/d/Hitema/cours devops/docker/
+
+COPY ./appNetwork.py ./appNetworkCopy.py
+
+CMD ["python3", "./appNetworkCopy.py"]
+
+EXPOSE 5000
