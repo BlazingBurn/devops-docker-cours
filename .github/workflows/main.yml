@@ -31,7 +31,6 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       
-      
       - name: Docker Images
         run: docker images
       
@@ -39,4 +38,4 @@ jobs:
         run: docker ps
 
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/flask_image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/flask_image:latest
