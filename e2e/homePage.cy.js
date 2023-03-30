@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe('Test du nom de la page d \'accueil', () => {
     it('Récupère le nom de la page d\'accueil', () => {
       cy.visit('/') 
