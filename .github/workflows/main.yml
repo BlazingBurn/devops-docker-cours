@@ -34,11 +34,17 @@ jobs:
       - name: Docker Tags
         run: docker tag flask_image ${{ secrets.DOCKER_USERNAME }}/flask_image:latest
       
+      - name: Docker Tags
+        run: docker tag mysql_image ${{ secrets.DOCKER_USERNAME }}/mysql_image:latest
+      
       - name: Docker Images
         run: docker images
       
       - name: Docker Containers
         run: docker ps
 
-      - name: Push Docker image
+      - name: Push Docker image => flask
         run: docker push ${{ secrets.DOCKER_USERNAME }}/flask_image:latest
+
+      - name: Push Docker image => mysql
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/mysql_image:latest
