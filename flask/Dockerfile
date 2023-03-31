@@ -7,6 +7,7 @@ RUN pip install -r requirements.txt
 
 RUN apt-get update -y && apt-get install -y python3 python3-pip
 
+COPY templates /app/templates
 COPY app.py /app
 
 EXPOSE 5000
