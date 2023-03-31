@@ -1,55 +1,28 @@
 from flask import Flask, render_template
-from flask_mysqldb import MySQL
+from flask_mysqldb import MySQL 
 
 app = Flask(__name__)
 
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root'
-app.config['MYSQL_HOST'] = 'mysql'
-app.config['MYSQL_DB'] = 'sampledb'
-app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+app.config['MYSQL_USER'] = 'root'  # set the MySQL user
+app.config['MYSQL_PASSWORD'] = 'root'  # set the MySQL password
+app.config['MYSQL_HOST'] = 'mysql'  # set the MySQL host
+app.config['MYSQL_DB'] = 'sampledb'  # set the MySQL database name
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'  # set the MySQL cursor class
 
-mysql = MySQL(app)
+mysql = MySQL(app)  # create a new instance of the MySQL object using the Flask app
 
-# config = {
-#    'user': 'root',
-#    'password': 'root',
-#    'host': 'mysql',
-#    'port': '3306',
-#    'database': 'sampledb'
-# }
-
-# mydb = mysql.connector.connect(host='mysql', 
-#                                user ="user",
-#                                password="user",
-#                                database="sampledb")
-
-print("DB connected")
-
-# mycursor = mydb.cursor()
-
-# mycursor.execute("SELECT * FROM fruits")
-
-# result = mycursor.fetchall()
-
-# mydb.close()
-
-@app.route("/")
+@app.route("/")  # define the root route of the Flask app
 def hello_world():
-   return "<h1>Hello Mr. Mahamadou Nimaga</h1>"
+   return "<h1>Hello Mr. Mahamadou Nimaga</h1>"  # return a greeting message as HTML
 
-@app.route('/fruits')
+@app.route('/fruits')  # define a new route for displaying fruits
 def index():
-   CS = mysql.connection.cursor()
-   CS.execute('''SELECT * FROM fruits''')
-   Executed_DATA = CS.fetchall()
-   print(Executed_DATA)
+   CS = mysql.connection.cursor() 
+   CS.execute('''SELECT * FROM fruits''') 
+   Executed_DATA = CS.fetchall()  # fetch all the results of the query and store them in a variable
+   print(Executed_DATA)  # print the results to the console
    # return str(Executed_DATA)
-   return render_template('fruits.html', fruits=Executed_DATA)
-   # mycursor.execute("SELECT * FROM fruits")
-   # fruits = mycursor.fetchall()
-   # return render_template('fruits.html', fruits=fruits)
- 
-if __name__== "__main__":
+   return render_template('fruits.html', fruits=Executed_DATA)  # render the fruits.html template with the 'fruits' variable set to the results of the query
 
+if __name__== "__main__":
    app.run('0.0.0.0',port=5000)
