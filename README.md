@@ -16,6 +16,8 @@ Vous pourrez lancer le conteneur avec docker-compose.
 
 Pour récupérer le code de votre projet sur la VM, utiliser git
 
+### Image du service web sur le dockerHub : "torbthemagni/flask_image"
+
 ## Partie 2 - Construction de l'image dans une CI
 
 On utiliser une CI/CD pour : 
@@ -27,5 +29,7 @@ Ensuite pour déployer le conteneur sur la VM cible, vous n'aurez qu'à faire un
 ## Partie 3 
 
 faire en sorte que votre application web se connecter à une base de donnée comme Mysql, Postgre ou Mongo et packager à nouveau l'application. Il faudra un conteneur pour le web service et un conteneur pour la base. Les deux conteneurs devront pouvoir communiquer entre eux
+
+### Image de la base de donnée sur le dockerHub : "torbthemagni/mysql_image"
 
 ## Pour tester la connection entre les containers il suffit de ce rendre sur la page 'localhost:5000/fruits'
